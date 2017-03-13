@@ -2,6 +2,8 @@ package com.rodrigo.myshare.web.Controller;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
@@ -11,7 +13,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import static org.junit.Assert.*;
 
-
+@RunWith(MockitoJUnitRunner.class)
 public class RecipeControllerTest {
 
     private MockMvc mockMvc;
