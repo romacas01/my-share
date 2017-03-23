@@ -33,7 +33,9 @@ public class CategoryDaoImplTest {
 
     @Test
     public void findAllShouldReturnTwo() throws Exception {
-        assertEquals("Asian", dao.findAll().get(0).getName());
+        assertThat(dao.findAll(), hasSize(2));
+        assertEquals(dao.findAll().get(0).getName(), "Asian");
+        assertEquals(dao.findAll().get(1).getName(), "Mediterranean");
     }
 
 }
