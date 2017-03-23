@@ -1,6 +1,7 @@
 package com.rodrigo.myshare.web.Controller;
 
 import com.rodrigo.myshare.model.Category;
+import com.rodrigo.myshare.service.CategoryService;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,13 +16,12 @@ import java.util.List;
 public class CategoryController {
 
     @Autowired
-    private SessionFactory sessionFactory;
+    private CategoryService service;
 
     @SuppressWarnings("unchecked")
     @RequestMapping("/categories")
     public String listCategories(Model model) {
-        Session session = sessionFactory.openSession();
-        List<Category> categories = session.createCriteria(Category.class).list();
+        List<Category> categories = service.findAll();
         model.addAttribute("categories", categories);
         return "category/categories";
     }
