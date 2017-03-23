@@ -49,6 +49,7 @@ public class CategoryControllerTest {
           );
           when(service.findAll()).thenReturn(categories);
 
+          //act and assert
           mockMvc.perform(get("/categories"))
               .andExpect(status().isOk())
               .andExpect(view().name("category/categories"))
