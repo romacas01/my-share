@@ -26,7 +26,9 @@ public class CategoryDaoImpl implements CategoryDao {
 
     @Override
     public Category findById(Long id) {
-      return null;
+        Session session = sessionFactory.openSession();
+        Category cat = session.get(Category.class, id);
+        return cat;
     }
 
     @Override

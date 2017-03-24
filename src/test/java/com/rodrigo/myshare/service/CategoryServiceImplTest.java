@@ -40,6 +40,17 @@ public class CategoryServiceImplTest {
     }
 
     @Test
+    public void shouldReturnACategoryById() throws Exception {
+        //arrange
+        Category category = new Category(8L, "Brazilian");
+        when(dao.findById(category.getId())).thenReturn(category);
+
+        //act
+        Category result = service.findById(8L);
+        assertEquals(category.getId(), result.getId());
+    }
+
+    @Test
     public void saveShouldSaveNewCategory() throws Exception {
 
         //arrange

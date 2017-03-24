@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="2" failures="0" name="com.rodrigo.myshare.dao.CategoryDaoImplTest" time="1.734" errors="0" skipped="0">
+<testsuite tests="3" failures="0" name="com.rodrigo.myshare.dao.CategoryDaoImplTest" time="1.212" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_20\jre\bin"/>
@@ -62,6 +62,7 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="com.rodrigo.myshare.dao.CategoryDaoImplTest" name="saveShouldSaveNewCategory" time="1.388"/>
-  <testcase classname="com.rodrigo.myshare.dao.CategoryDaoImplTest" name="findAllShouldReturnTwo" time="0.346"/>
+  <testcase classname="com.rodrigo.myshare.dao.CategoryDaoImplTest" name="saveShouldSaveNewCategory" time="0.554"/>
+  <testcase classname="com.rodrigo.myshare.dao.CategoryDaoImplTest" name="findAllShouldReturnTwo" time="0.516"/>
+  <testcase classname="com.rodrigo.myshare.dao.CategoryDaoImplTest" name="shouldReturnAspecificCategory" time="0.142"/>
 </testsuite>
