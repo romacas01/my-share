@@ -1,4 +1,4 @@
 <dataset>
-  <category id="1" name="Asian"/>
-  <category id="2" name="Mediterranean"/>
+    <category id="2" name="Italian"/>
+    <category id="3" name="Japanese"/>
 </dataset>
