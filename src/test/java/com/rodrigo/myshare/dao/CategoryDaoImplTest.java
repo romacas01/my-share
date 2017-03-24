@@ -39,6 +39,11 @@ public class CategoryDaoImplTest {
     }
 
     @Test
+    public void shouldReturnAspecificCategory() throws Exception {
+        assertEquals(dao.findById(2L).getName(), "Italian");
+    }
+
+    @Test
     public void saveShouldSaveNewCategory() throws Exception {
         //arrange
         Category cat = new Category(5L, "Portuguese");

@@ -11,8 +11,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -56,4 +55,37 @@ public class CategoryControllerTest {
               .andExpect(model().attribute("categories",categories));
           verify(service).findAll();
       }
+
+      @Test
+      public void shouldDisplayDetailsPage() throws Exception {
+          //arrange
+          Category cat = new Category(7L, "Chinese");
+          when(service.findById(cat.getId())).thenReturn(cat);
+
+          //act and assert
+          mockMvc.perform(get("/categories/7"))
+              .andExpect(status().isOk())
+              .andExpect(view().name("category/details"))
+              .andExpect(model().attribute("category", cat));
+          verify(service).findById(7L);
+
+      }
+
+      @Test
+      public void shouldSaveAndRedirectToTheNewCategoryPage() throws Exception {
+          //arrange
+          doAnswer(invocation -> {
+              Category cat = (Category)invocation.getArguments()[0];
+              cat.setId(6L);
+              return null;
+          }).when(service).save(any(Category.class));
+
+          //act
+          mockMvc.perform(post("/categories")
+              .param("name", "Thai")).andExpect(redirectedUrl("/categories/6"));
+          verify(service).save(any(Category.class));
+
+
+
+    }
 }
