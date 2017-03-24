@@ -39,4 +39,17 @@ public class CategoryServiceImplTest {
         verify(dao).findAll();
     }
 
+    @Test
+    public void saveShouldSaveNewCategory() throws Exception {
+
+        //arrange
+        Category cat = new Category(6L, "Spanish");
+
+        //act
+        service.save(cat);
+
+        //assert that the method save in the dao was called
+        verify(dao).save(cat);
+    }
+
 }

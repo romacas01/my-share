@@ -8,6 +8,7 @@ import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
 import com.github.springtestdbunit.annotation.DatabaseTearDown;
 import com.rodrigo.myshare.Application;
+import com.rodrigo.myshare.model.Category;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,16 @@ public class CategoryDaoImplTest {
         assertEquals(dao.findAll().get(0).getName(), "Italian");
         assertEquals(dao.findAll().get(1).getName(), "Japanese");
 
+    }
+
+    @Test
+    public void saveShouldSaveNewCategory() throws Exception {
+        //arrange
+        Category cat = new Category(5L, "Portuguese");
+        //act
+        dao.save(cat);
+        //assert
+        assertThat(dao.findAll(), hasSize(3));
     }
 
 }
