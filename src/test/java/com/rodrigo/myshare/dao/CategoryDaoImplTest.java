@@ -6,11 +6,9 @@ import static org.junit.Assert.assertEquals;
 
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
-
 import com.github.springtestdbunit.annotation.DatabaseTearDown;
 import com.rodrigo.myshare.Application;
-import org.junit.After;
-import org.junit.Before;
+import com.rodrigo.myshare.model.Category;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +19,8 @@ import org.springframework.test.context.support.DependencyInjectionTestExecution
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(Application.class)
-@DatabaseSetup("classpath:categories.xml")
+@DatabaseSetup(value= "/categories.xml")
+@DatabaseTearDown(value= "/categoriesin.xml")
 @TestExecutionListeners({
     DependencyInjectionTestExecutionListener.class,
     DbUnitTestExecutionListener.class
@@ -34,8 +33,19 @@ public class CategoryDaoImplTest {
     @Test
     public void findAllShouldReturnTwo() throws Exception {
         assertThat(dao.findAll(), hasSize(2));
-        assertEquals(dao.findAll().get(0).getName(), "Asian");
-        assertEquals(dao.findAll().get(1).getName(), "Mediterranean");
+        assertEquals(dao.findAll().get(0).getName(), "Italian");
+        assertEquals(dao.findAll().get(1).getName(), "Japanese");
+
+    }
+
+    @Test
+    public void saveShouldSaveNewCategory() throws Exception {
+        //arrange
+        Category cat = new Category(5L, "Portuguese");
+        //act
+        dao.save(cat);
+        //assert
+        assertThat(dao.findAll(), hasSize(3));
     }
 
 }
