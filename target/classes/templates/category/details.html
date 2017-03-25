@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
 
@@ -9,7 +9,7 @@
     <meta name="description" content=""/>
     <meta name="author" content=""/>
 
-    <title>Portfolio Item - Start Bootstrap Template</title>
+    <title th:text="*{category.name}"></title>
 
     <!-- Bootstrap Core CSS -->
     <link href="/css/bootstrap2.min.css" rel="stylesheet"/>
