@@ -37,6 +37,12 @@ public class CategoryController {
         return "category/details";
     }
 
+    @RequestMapping("/categories/new")
+    public String displayForm(Model model) {
+        model.addAttribute("category", new Category());
+        return "category/form";
+    }
+
     @RequestMapping(value = "/categories", method = RequestMethod.POST)
     public String addCategory(Category category) {
         service.save(category);
